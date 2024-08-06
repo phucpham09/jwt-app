@@ -10,6 +10,11 @@ const noteSchema = new mongoose.Schema({
       type: String,
       required: [true, "Your content is required"],
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     createdAt: {
       type: Date,
       default: new Date(),

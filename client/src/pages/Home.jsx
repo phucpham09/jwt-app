@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Note from "../components/Note";
 import CreateArea from "../components/CreateArea";
+import Button from "../components/Button"
 const Home = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
@@ -73,11 +74,11 @@ const Home = () => {
        <div>
       <Header />
       <div className="home_page" style={{height: '250px'}}>
-        <h4>
+        <h4 className="welcome">
           {" "}
           Welcome <span>{username}</span>
         </h4>
-        <button onClick={Logout}>LOGOUT</button>
+        <Button name="Log Out" Logout={Logout}/>
       </div>
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem) => (
