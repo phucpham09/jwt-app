@@ -1,0 +1,22 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend # Thư mục chứa Dockerfile của backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend # Thư mục chứa Dockerfile của frontend
+    ports:
+      - "3000:80"
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"

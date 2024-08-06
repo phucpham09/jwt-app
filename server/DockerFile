@@ -1,0 +1,20 @@
+# Sử dụng image Node.js chính thức làm base image
+FROM node:18
+
+# Tạo thư mục làm việc trong container
+WORKDIR /usr/src/app
+
+# Sao chép package.json và package-lock.json vào container
+COPY package*.json ./
+
+# Cài đặt các dependencies
+RUN npm install
+
+# Sao chép mã nguồn vào container
+COPY . .
+
+# Mở cổng mà ứng dụng sẽ lắng nghe
+EXPOSE 4000
+
+# Chạy ứng dụng
+CMD ["npm", "start"]

@@ -1,0 +1,25 @@
+# Sử dụng image Node.js chính thức làm base image
+FROM node:18
+
+# Tạo thư mục làm việc trong container
+WORKDIR /usr/src/app
+
+# Sao chép package.json và package-lock.json vào container
+COPY package*.json ./
+
+# Cài đặt các dependencies
+RUN npm install
+
+# Sao chép mã nguồn vào container
+COPY . .
+
+# Xây dựng ứng dụng React
+RUN npm run build
+
+# Sử dụng image nginx để phục vụ ứng dụng React
+FROM nginx:alpine
+COPY --from=0 /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+
+# Chạy nginx
+CMD ["nginx", "-g", "daemon off;"]
