@@ -43,14 +43,14 @@ function CreateArea(props) {
   return (
     <div>
       <form className="create-note">
-        {isExpanded && (
+        {/* {isExpanded && ( */}
           <input
             name="title"
             onChange={handleChange}
             value={note.title}
             placeholder="Title"
           />
-        )}
+        {/* )} */}
 
         <textarea
           name="content"
@@ -58,13 +58,14 @@ function CreateArea(props) {
           onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
-          rows={isExpanded ? 3 : 1}
+          // rows={isExpanded ? 3 : 1}
+          rows = '3'
         />
-        <Zoom in={isExpanded}>
+        {/* <Zoom in={isExpanded}> */}
           <Fab onClick={submitNote}>
             <AddIcon />
           </Fab>
-        </Zoom>
+        {/* </Zoom> */}
       </form>
     </div>
   );
