@@ -42,7 +42,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/");
+        const response = await axios.get("http://localhost:4000/notes");
         setNotes(response.data);
       } catch (error) {
         console.log(error);
@@ -54,7 +54,7 @@ const Home = () => {
 
   async function addNote(newNote) {
     try {
-      const response = await axios.post("http://localhost:4000/add", newNote);
+      const response = await axios.post("http://localhost:4000/notes/add", newNote);
       setNotes((prevNotes) => [...prevNotes, response.data]);
     } catch (error) {
       console.log(error);
@@ -63,7 +63,7 @@ const Home = () => {
 
   async function deleteNote(id) {
     try {
-      await axios.delete(`http://localhost:4000/delete/${id}`);
+      await axios.delete(`http://localhost:4000/notes/delete/${id}`);
       setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
     } catch (error) {
       console.log(error);
